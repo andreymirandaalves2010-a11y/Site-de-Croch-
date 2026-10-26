@@ -1,5 +1,15 @@
-const express = require("express");
+//NÃO ME ALTERE!!!!
 
+//NÃO ME ALTERE!!!!
+
+
+//NÃO ME ALTERE!!!!
+
+//NÃO ME ALTERE!!!!
+
+
+const express = require("express");
+//NÃO ME ALTERE!!!!
 const app = express();
 const PORT = 3000;
 
@@ -12,3 +22,10 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+//NÃO ME ALTERE!!!!
+
+//NÃO ME ALTERE!!!!
+
+//NÃO ME ALTERE!!!!
+
+//NÃO ME ALTERE!!!!
