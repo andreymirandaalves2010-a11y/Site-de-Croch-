@@ -1,11 +1,12 @@
-
-const express = require('express');
+const express = require("express");
 
 const app = express();
-const PORT = 3001;
+const PORT = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Express funcionando!');
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Servidor do projeto Crochê funcionando!");
 });
 
 app.listen(PORT, () => {
