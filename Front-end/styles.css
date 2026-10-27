@@ -1,0 +1,279 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Moda em Fios Artesanais
+   Sumário:
+   1. Variáveis
+   2. Reset e base
+   3. Tipografia
+   4. Links
+   5. Layout (header, seções, rodapé)
+   6. Componentes (logo, lista de produtos, FAQ)
+   7. Responsivo
+   ========================================================================== */
+
+
+/* 1. Variáveis
+   ========================================================================== */
+:root {
+    /* Cores (mantidas do original) */
+    --cor-texto: #ffffff;
+    --cor-fundo-base: #4dbbff;
+    --cor-gradiente-centro: rgb(56, 169, 240);
+    --cor-gradiente-borda: rgb(0, 10, 73);
+    --cor-destaque-sutil: rgba(255, 255, 255, 0.12);
+    --cor-linha: rgba(255, 255, 255, 0.35);
+
+    /* Fonte (mantida do original) */
+    --fonte: 'Courier New', Courier, monospace;
+
+    /* Escala tipográfica fluida: mínimo, ideal, máximo */
+    --texto-titulo-secao: clamp(2rem, 6vw + 0.5rem, 4.5rem);
+    --texto-titulo-item: clamp(1.4rem, 3.5vw + 0.5rem, 2.5rem);
+    --texto-corpo: clamp(1.25rem, 1.2vw + 0.8rem, 1.5rem);
+    --texto-pequeno: 1rem;
+
+    /* Espaçamento e largura */
+    --espaco-xs: 0.5rem;
+    --espaco-s: 1rem;
+    --espaco-m: 1.5rem;
+    --espaco-l: 3rem;
+    --espaco-xl: clamp(3rem, 8vw, 6rem);
+    --largura-texto: 60ch;
+    --largura-max: 1100px;
+}
+
+
+/* 2. Reset e base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: var(--espaco-m);
+    background: var(--cor-fundo-base);
+    background: radial-gradient(circle, var(--cor-gradiente-centro) 26%, var(--cor-gradiente-borda) 60%);
+    background-attachment: fixed;
+    color: var(--cor-texto);
+    font-family: var(--fonte);
+    font-size: var(--texto-corpo);
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* 3. Tipografia
+   ========================================================================== */
+h1,
+h2,
+h3 {
+    font-family: var(--fonte);
+    line-height: 1.15;
+    text-align: center;
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: var(--texto-titulo-secao);
+}
+
+h2 {
+    font-size: var(--texto-titulo-secao);
+    margin-bottom: var(--espaco-m);
+}
+
+h3 {
+    font-size: var(--texto-titulo-item);
+    margin-bottom: var(--espaco-xs);
+}
+
+p {
+    max-width: var(--largura-texto);
+    margin-top: var(--espaco-s);
+    font-family: var(--fonte);
+    font-size: var(--texto-corpo);
+}
+
+
+/* 4. Links
+   ========================================================================== */
+a {
+    color: var(--cor-texto);
+    font-weight: bold;
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 2px;
+}
+
+a:hover {
+    text-decoration-thickness: 4px;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--cor-texto);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+
+/* 5. Layout
+   ========================================================================== */
+header,
+main,
+footer {
+    width: 100%;
+    max-width: var(--largura-max);
+    margin-inline: auto;
+}
+
+header,
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+header {
+    min-height: 100vh;
+    padding-block: var(--espaco-xl);
+}
+
+section {
+    min-height: 100vh;
+    padding-block: var(--espaco-xl);
+}
+
+/* Linha sutil entre as seções de conteúdo */
+main > section + section {
+    border-top: 1px solid var(--cor-linha);
+}
+
+footer {
+    padding-block: var(--espaco-l);
+    border-top: 1px solid var(--cor-linha);
+    text-align: center;
+}
+
+footer p {
+    max-width: none;
+    margin-top: var(--espaco-xs);
+    font-size: var(--texto-pequeno);
+}
+
+
+/* 6. Componentes
+   ========================================================================== */
+
+/* Logo e apresentação */
+#logo {
+    min-height: 0;
+    padding-block: 0;
+}
+
+#logo img {
+    width: clamp(140px, 30vw, 260px);
+    margin-bottom: var(--espaco-m);
+}
+
+/* Botão de destaque (link do Instagram no topo e em encomendas) */
+#logo a,
+#encomendas p:last-of-type a {
+    display: inline-block;
+    padding: 0.7em 1.4em;
+    border: 2px solid var(--cor-texto);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#logo a:hover,
+#encomendas p:last-of-type a:hover {
+    background-color: var(--cor-texto);
+    color: var(--cor-gradiente-borda);
+}
+
+/* Lista de produtos */
+#produtos ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: var(--espaco-m);
+    width: 100%;
+    margin-top: var(--espaco-l);
+}
+
+#produtos li {
+    padding: var(--espaco-m);
+    border: 1px solid var(--cor-linha);
+    border-radius: 12px;
+    background-color: var(--cor-destaque-sutil);
+}
+
+#produtos li h3 {
+    font-size: clamp(1.25rem, 2vw + 0.6rem, 1.75rem);
+}
+
+#produtos li p {
+    margin-inline: auto;
+    font-size: var(--texto-pequeno);
+}
+
+/* Dúvidas frequentes */
+#duvidas article {
+    width: 100%;
+    max-width: var(--largura-texto);
+    margin-top: var(--espaco-l);
+}
+
+#duvidas article h3 {
+    font-size: clamp(1.25rem, 2vw + 0.6rem, 1.75rem);
+}
+
+#duvidas article p {
+    margin-inline: auto;
+    font-size: var(--texto-pequeno);
+}
+
+
+/* 7. Responsivo
+   ========================================================================== */
+@media (max-width: 600px) {
+    body {
+        padding: var(--espaco-s);
+    }
+
+    section,
+    header {
+        min-height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    a {
+        transition: none;
+    }
+}
